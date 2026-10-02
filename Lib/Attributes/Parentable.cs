@@ -15,8 +15,8 @@ abstract class Parentable<T> : IParentable<T>, IScriptable {
     public List<IParented<T>> Children { get; set; } = [];
     public ProcessMode ProcessMode { get; set; } = ProcessMode.PAUSABLE;
 
-    public Parentable(params List<IParented<T>> children) {
-        Children = children.Any() ? children : Children;
+    public Parentable(params IParented<T>[] children) {
+        Children = children.Any() ? children.ToList() : Children;
     }
 
     public void Dispose() {

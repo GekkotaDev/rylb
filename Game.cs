@@ -24,10 +24,10 @@ class Game : IDisposable {
         }
     }
 
-    public static Game Fetch(List<Parentable<dynamic>>? entities = null) {
+    public static Game Fetch(params Parentable<dynamic>[] entities) {
         if (Instance == null) {
             Instance = new Game {
-                Entities = entities ?? []
+                Entities = entities.ToList() ?? []
             };
 
             return Instance;
